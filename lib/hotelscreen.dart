@@ -30,6 +30,7 @@ class HotelScreen extends StatelessWidget {
                 child: IconButton(
                   onPressed: null,
                   icon: Icon(
+                    // 見本icon(星)の中の色が黒で枠は白になってますが、こちらも検索しても解決できず、中が透明の模様にしてます。
                     Icons.star_border,
                     color: Colors.white,
                   ),
