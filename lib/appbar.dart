@@ -114,7 +114,11 @@ class TopBar extends StatelessWidget {
             //sliverToBoxAdapterやpaddingをwidgetととして（topとheightをポジションパラメータとして使い）作りたかったですが、縦幅のエラーが解消できず、columnから作ってます。
             child: Padding(
               padding: const EdgeInsets.only(
-                  top: 10, bottom: 15, right: 20, left: 20),
+                  //ダウンロードした写真の大きさバラバラでpaddingとheightを別々に設定してます。
+                  top: 10,
+                  bottom: 15,
+                  right: 20,
+                  left: 20),
               child: Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(5),
@@ -156,6 +160,7 @@ class TopBar extends StatelessWidget {
                   height: 335,
                   child: const HotelScreen(
                     hotelname: 'Beautiful Room',
+                    //見本と写真の大きさが違く、全体大きさ異なります。
                     imagePath: 'lib/images/hotel3.jpg',
                   )),
             ),
