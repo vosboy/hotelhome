@@ -43,11 +43,11 @@ class TopBar extends StatelessWidget {
                   const Text(
                     'Type your Location',
                     style: TextStyle(
-                      fontSize: 19,
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      height: 0.5,
-                    ),
+                        fontSize: 19,
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        height: 0.5,
+                        letterSpacing: -0.5),
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(
@@ -57,24 +57,30 @@ class TopBar extends StatelessWidget {
                     child: TextField(
                       cursorColor: Colors.red,
                       decoration: InputDecoration(
-                          //見本はタッチし、アイコンの色が変わりますが、できず、タッチ後の色にしてます。
-                          prefixIcon: const Icon(Icons.search),
-                          prefixIconColor: Colors.red,
-                          filled: true,
-                          fillColor: Colors.white,
-                          enabledBorder: OutlineInputBorder(
-                            borderSide: const BorderSide(
-                              color: Colors.white,
-                            ),
-                            borderRadius: BorderRadius.circular(30),
+                        //見本はタッチし、アイコンの色が変わりますが、できず、タッチ後の色にしてます。
+                        prefixIcon: const Icon(Icons.search),
+                        prefixIconColor: Colors.red,
+                        filled: true,
+                        fillColor: Colors.white,
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: const BorderSide(
+                            color: Colors.white,
                           ),
-                          focusedBorder: OutlineInputBorder(
-                            borderSide: const BorderSide(
-                              color: Colors.white,
-                            ),
-                            borderRadius: BorderRadius.circular(30),
+                          borderRadius: BorderRadius.circular(30),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: const BorderSide(
+                            color: Colors.white,
                           ),
-                          hintText: "Bouddha,kathmandu"),
+                          borderRadius: BorderRadius.circular(30),
+                        ),
+                        hintText: "Bouddha,kathmandu",
+                        hintStyle: const TextStyle(
+                          color: Colors.black54,
+                          fontWeight: FontWeight.w400,
+                          letterSpacing: -0.5,
+                        ),
+                      ),
                     ),
                   ),
                 ],
@@ -124,8 +130,9 @@ class TopBar extends StatelessWidget {
                   borderRadius: BorderRadius.circular(5),
                   color: const Color(0xFFffffff),
                 ),
-                height: 304,
+                height: 303,
                 child: const HotelScreen(
+                  imageHeigt: 200,
                   imagePath: 'lib/images/hotel1.jpg',
                   hotelname: 'Awesome room near Bouddha',
                 ),
@@ -141,9 +148,10 @@ class TopBar extends StatelessWidget {
                     borderRadius: BorderRadius.circular(5),
                     color: const Color(0xFFffffff),
                   ),
-                  height: 304,
+                  height: 338,
                   child: const HotelScreen(
-                    hotelname: 'Beautiful Room',
+                    imageHeigt: 230,
+                    hotelname: 'Peaceful Room',
                     imagePath: 'lib/images/hotel2.jpg',
                   )),
             ),
@@ -157,8 +165,9 @@ class TopBar extends StatelessWidget {
                     borderRadius: BorderRadius.circular(5),
                     color: const Color(0xFFffffff),
                   ),
-                  height: 335,
+                  height: 337,
                   child: const HotelScreen(
+                    imageHeigt: 230,
                     hotelname: 'Beautiful Room',
                     //見本と写真の大きさが違く、全体大きさ異なります。
                     imagePath: 'lib/images/hotel3.jpg',
@@ -170,28 +179,36 @@ class TopBar extends StatelessWidget {
               padding: const EdgeInsets.only(
                   top: 25, bottom: 15, right: 20, left: 20),
               child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(5),
-                    color: const Color(0xFFffffff),
-                  ),
-                  height: 378,
-                  child: const HotelScreen(
-                    hotelname: 'Vintage room near Pashupatinath',
-                    imagePath: 'lib/images/hotel4.jpeg',
-                  )),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(5),
+                  color: const Color(0xFFffffff),
+                ),
+                height: 378,
+                child: const HotelScreen(
+                  imageHeigt: 275,
+                  hotelname: 'Vintage room near Pashupatinath',
+                  imagePath: 'lib/images/hotel4.jpeg',
+                ),
+              ),
             ),
           ),
           SliverToBoxAdapter(
+            //sliverToBoxAdapterやpaddingをwidgetととして（topとheightをポジションパラメータとして使い）作りたかったですが、縦幅のエラーが解消できず、columnから作ってます。
             child: Padding(
               padding: const EdgeInsets.only(
-                  top: 25, bottom: 15, right: 20, left: 20),
+                  //ダウンロードした写真の大きさバラバラでpaddingとheightを別々に設定してます。
+                  top: 25,
+                  bottom: 15,
+                  right: 20,
+                  left: 20),
               child: Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(5),
                   color: const Color(0xFFffffff),
                 ),
-                height: 304,
+                height: 303,
                 child: const HotelScreen(
+                  imageHeigt: 200,
                   imagePath: 'lib/images/hotel1.jpg',
                   hotelname: 'Awesome room near Bouddha',
                 ),
@@ -207,9 +224,10 @@ class TopBar extends StatelessWidget {
                     borderRadius: BorderRadius.circular(5),
                     color: const Color(0xFFffffff),
                   ),
-                  height: 304,
+                  height: 338,
                   child: const HotelScreen(
-                    hotelname: 'Beautiful Room',
+                    imageHeigt: 230,
+                    hotelname: 'Peaceful Room',
                     imagePath: 'lib/images/hotel2.jpg',
                   )),
             ),
@@ -223,26 +241,12 @@ class TopBar extends StatelessWidget {
                     borderRadius: BorderRadius.circular(5),
                     color: const Color(0xFFffffff),
                   ),
-                  height: 335,
+                  height: 337,
                   child: const HotelScreen(
+                    imageHeigt: 230,
                     hotelname: 'Beautiful Room',
+                    //見本と写真の大きさが違く、全体大きさ異なります。
                     imagePath: 'lib/images/hotel3.jpg',
-                  )),
-            ),
-          ),
-          SliverToBoxAdapter(
-            child: Padding(
-              padding: const EdgeInsets.only(
-                  top: 25, bottom: 15, right: 20, left: 20),
-              child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(5),
-                    color: const Color(0xFFffffff),
-                  ),
-                  height: 378,
-                  child: const HotelScreen(
-                    hotelname: 'Vintage room near Pashupatinath',
-                    imagePath: 'lib/images/hotel4.jpeg',
                   )),
             ),
           ),
@@ -255,8 +259,32 @@ class TopBar extends StatelessWidget {
                   borderRadius: BorderRadius.circular(5),
                   color: const Color(0xFFffffff),
                 ),
-                height: 304,
+                height: 378,
                 child: const HotelScreen(
+                  imageHeigt: 275,
+                  hotelname: 'Vintage room near Pashupatinath',
+                  imagePath: 'lib/images/hotel4.jpeg',
+                ),
+              ),
+            ),
+          ),
+          SliverToBoxAdapter(
+            //sliverToBoxAdapterやpaddingをwidgetととして（topとheightをポジションパラメータとして使い）作りたかったですが、縦幅のエラーが解消できず、columnから作ってます。
+            child: Padding(
+              padding: const EdgeInsets.only(
+                  //ダウンロードした写真の大きさバラバラでpaddingとheightを別々に設定してます。
+                  top: 25,
+                  bottom: 15,
+                  right: 20,
+                  left: 20),
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(5),
+                  color: const Color(0xFFffffff),
+                ),
+                height: 303,
+                child: const HotelScreen(
+                  imageHeigt: 200,
                   imagePath: 'lib/images/hotel1.jpg',
                   hotelname: 'Awesome room near Bouddha',
                 ),
@@ -272,9 +300,10 @@ class TopBar extends StatelessWidget {
                     borderRadius: BorderRadius.circular(5),
                     color: const Color(0xFFffffff),
                   ),
-                  height: 304,
+                  height: 338,
                   child: const HotelScreen(
-                    hotelname: 'Beautiful Room',
+                    imageHeigt: 230,
+                    hotelname: 'Peaceful Room',
                     imagePath: 'lib/images/hotel2.jpg',
                   )),
             ),
@@ -288,9 +317,11 @@ class TopBar extends StatelessWidget {
                     borderRadius: BorderRadius.circular(5),
                     color: const Color(0xFFffffff),
                   ),
-                  height: 335,
+                  height: 337,
                   child: const HotelScreen(
+                    imageHeigt: 230,
                     hotelname: 'Beautiful Room',
+                    //見本と写真の大きさが違く、全体大きさ異なります。
                     imagePath: 'lib/images/hotel3.jpg',
                   )),
             ),
@@ -300,15 +331,17 @@ class TopBar extends StatelessWidget {
               padding: const EdgeInsets.only(
                   top: 25, bottom: 15, right: 20, left: 20),
               child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(5),
-                    color: const Color(0xFFffffff),
-                  ),
-                  height: 378,
-                  child: const HotelScreen(
-                    hotelname: 'Vintage room near Pashupatinath',
-                    imagePath: 'lib/images/hotel4.jpeg',
-                  )),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(5),
+                  color: const Color(0xFFffffff),
+                ),
+                height: 378,
+                child: const HotelScreen(
+                  imageHeigt: 275,
+                  hotelname: 'Vintage room near Pashupatinath',
+                  imagePath: 'lib/images/hotel4.jpeg',
+                ),
+              ),
             ),
           ),
         ],

@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 
 class HotelScreen extends StatelessWidget {
   final String hotelname, imagePath;
+  final double imageHeigt;
 
   const HotelScreen({
     super.key,
     required this.hotelname,
     required this.imagePath,
+    required this.imageHeigt,
   });
 
   @override
@@ -20,12 +22,15 @@ class HotelScreen extends StatelessWidget {
           ),
           child: Stack(
             children: [
-              Image.asset(
-                imagePath,
-                fit: BoxFit.cover,
+              SizedBox(
+                width: double.infinity,
+                height: imageHeigt,
+                child: Image.asset(
+                  imagePath,
+                  fit: BoxFit.cover,
+                ),
               ),
               const Positioned(
-                bottom: 155,
                 left: 305,
                 child: IconButton(
                   onPressed: null,
@@ -56,12 +61,14 @@ class HotelScreen extends StatelessWidget {
             children: [
               Text(
                 hotelname,
-                style:
-                    const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                style: const TextStyle(
+                    fontSize: 17,
+                    fontWeight: FontWeight.bold,
+                    letterSpacing: -0.3),
               ),
               const Text(
                 'Bouddha, Kathmandu',
-                style: TextStyle(fontSize: 13),
+                style: TextStyle(fontSize: 13, letterSpacing: -0.1),
               ),
               const SizedBox(
                 height: 5,
@@ -90,7 +97,8 @@ class HotelScreen extends StatelessWidget {
                   ),
                   Text(
                     '(220 reviews)',
-                    style: TextStyle(color: Colors.black45),
+                    style:
+                        TextStyle(color: Colors.black45, letterSpacing: -0.2),
                   )
                 ],
               ),
